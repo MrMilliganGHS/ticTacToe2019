@@ -26,13 +26,14 @@ int main() {
 		player1Turn = !player1Turn;
 	}
 	printBoard(board, player1Turn);
-	if(player1Turn==true){
-		std:: cout << "Player 2 Won! ";
+
+	std::cout << std::endl << "Player " ;
+	if (checkWin(board) == 1){
+		std::cout << "1 won!" << std::endl;
+	}else {
+		std::cout << "2 won!" << std::endl;
 	}
-	else{
-		std:: cout << "Player 1 Won! ";
-	}
-	std::cout << "Lol you lost. GIT gud you scrub";
+  std::cout << "Lol you lost. GIT gud you scrub";
 	return 0;
 }
 
