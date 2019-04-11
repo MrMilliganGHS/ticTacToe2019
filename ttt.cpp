@@ -1,18 +1,22 @@
 #include <iostream>
 
-void printBoard(int board[3][3], bool player1Turn);
+void printBoard(int board[3][3], bool player1Turn, std::string player1token, std::string player2token);
 int checkWin(int board[3][3]);
 int sumRow(int row[3]);
 int sumCol(int board[3][3], int column);
 
 int main() {
 	bool player1Turn = true;
-	
+	std::string player1token;
+	std::string player2token;
 	int board[3][3] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
 	int row, col, result = 0;
-	
+	std::cout << "Player 1, enter a symbol to represent your token" << std::endl;
+	std::cin >> player1token;
+	std::cout << "Player 2, enter a symbol to represent your token" << std::endl;
+	std::cin >> player2token;
 	while(checkWin(board) == 0) {
-		printBoard(board, player1Turn);
+		printBoard(board, player1Turn, player1token, player2token);
 		std::cout << "Enter a row and a column: ";
 		std::cin >> row >> col;
 		
@@ -25,11 +29,13 @@ int main() {
 		//Switch players
 		player1Turn = !player1Turn;
 	}
-	printBoard(board, player1Turn);
+	printBoard(board, player1Turn, player1token, player2token);
+	if(player1Turn) std::cout << "Player 2 won!" << std::endl;
+	else std::cout << "Player 1 won!" << std::endl;
 	return 0;
 }
 
-void printBoard(int board[3][3], bool player1Turn) {
+void printBoard(int board[3][3], bool player1Turn, std::string player1token, std::string player2token) {
 	if(player1Turn) {
 		std::cout << "Player 1's Turn" << std::endl;
 	} else {
@@ -42,10 +48,10 @@ void printBoard(int board[3][3], bool player1Turn) {
 					std::cout << "   ";
 					break;
 				case 1:
-					std::cout << " X ";
+					std::cout << " " << player1token << " ";
 					break;
 				case -1:
-					std::cout << " O ";
+					std::cout << " " << player2token << " ";
 					break;
 			}
 		}
