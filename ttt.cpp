@@ -4,6 +4,7 @@ void printBoard(int board[3][3], bool player1Turn);
 int checkWin(int board[3][3]);
 int sumRow(int row[3]);
 int sumCol(int board[3][3], int column);
+void phrasePyramid(std::string phrase);
 
 int main() {
 	bool player1Turn = true;
@@ -28,9 +29,9 @@ int main() {
 	printBoard(board, player1Turn);
 	std::cout << std::endl << "Player " ;
 	if (checkWin(board) == 1){
-		std::cout << "1 won!" << std::endl;
+		phrasePyramid("1 won!");
 	}else {
-		std::cout << "2 won!" << std::endl;
+		phrasePyramid("2 won!");
 	}
 	return 0;
 }
@@ -92,4 +93,16 @@ int sumRow(int row[3]) {
 
 int sumCol(int board[3][3], int column) {
 	return board[0][column] + board[1][column] + board[2][column];
+}
+
+void phrasePyramid(std::string phrase) {
+	std::string output;
+	for(int i = 0; i < phrase.size(); i++) {
+		output += phrase[i];
+		std::cout << output << std::endl;
+	}
+	for(int i = phrase.size() - 1; i >= 0; i--) {
+		output.erase(i);
+		std::cout << output << std::endl;
+	}
 }
