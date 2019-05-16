@@ -42,10 +42,10 @@ void printBoard(int board[3][3], bool player1Turn) {
 					std::cout << "   ";
 					break;
 				case 1:
-					std::cout << " X ";
+					std::cout << " :) ";
 					break;
 				case -1:
-					std::cout << " O ";
+					std::cout << " :( ";
 					break;
 			}
 		}
@@ -67,6 +67,7 @@ int checkWin(int board[3][3]) {
 		}
 	}
 	
+	
 	//Check diagonals for wins
 	int diagTop = board[0][0] + board[1][1] + board[2][2],
 		diagBot = board[2][0] + board[1][1] + board[0][2];
@@ -87,3 +88,5 @@ int sumRow(int row[3]) {
 int sumCol(int board[3][3], int column) {
 	return board[0][column] + board[1][column] + board[2][column];
 }
+
+
